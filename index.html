@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>شبیه‌ساز زمان‌بندی FCFS</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow">Operating Systems · CPU Scheduling</p>
+      <h1>شبیه‌ساز الگوریتم FCFS</h1>
+      <p class="sub">First Come, First Served — هر فرایندی زودتر وارد صف شود، زودتر اجرا می‌شود.</p>
+    </header>
+
+    <section class="panel">
+      <h2>تعریف فرایندها</h2>
+      <p class="hint">برای هر فرایند، زمان ورود (AT) و زمان اجرای CPU (BT) را وارد کنید.</p>
+      <div class="form-grid">
+        <label>نام فرایند<input id="pname" value="P1" maxlength="8"></label>
+        <label>زمان ورود<input id="arrival" type="number" min="0" value="0"></label>
+        <label>زمان اجرا<input id="burst" type="number" min="1" value="5"></label>
+        <button id="add">افزودن فرایند</button>
+      </div>
+      <div class="actions">
+        <button class="secondary" id="sample">بارگذاری مثال</button>
+        <button class="secondary" id="clear">پاک‌کردن همه</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>فرایند</th><th>زمان ورود</th><th>زمان اجرا</th><th>حذف</th></tr></thead>
+          <tbody id="processRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><h2>گانت چارت</h2><span id="status" class="status">آماده اجرا</span></div>
+      <div id="gantt" class="gantt empty">ابتدا حداقل یک فرایند اضافه کنید.</div>
+      <div id="ticks" class="ticks"></div>
+      <div class="actions">
+        <button id="run">▶ شروع انیمیشن</button>
+        <button class="secondary" id="pause">Ⅱ مکث</button>
+        <button class="secondary" id="reset">↺ شروع مجدد</button>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <p id="clock" class="clock">زمان شبیه‌سازی: 0</p>
+    </section>
+
+    <section class="panel">
+      <h2>جدول محاسبات</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>فرایند</th><th>AT</th><th>BT</th><th>شروع</th><th>پایان</th><th>WT</th><th>TAT</th></tr></thead>
+          <tbody id="resultRows"></tbody>
+        </table>
+      </div>
+      <div class="stats">
+        <div><span>میانگین زمان انتظار</span><strong id="avgWait">—</strong></div>
+        <div><span>میانگین زمان بازگشت</span><strong id="avgTurn">—</strong></div>
+      </div>
+    </section>
+    <footer>پروژه آموزشی درس سیستم‌عامل · الگوریتم غیرقابل‌وقفه FCFS</footer>
+  </main>
+  <script src="src/app.js"></script>
+</body>
+</html>

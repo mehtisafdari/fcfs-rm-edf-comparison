@@ -1,40 +1,35 @@
-# مقایسه الگوریتم‌های FCFS، RM و EDF
-**Comparative Analysis of FCFS vs. RM and EDF**
+# شبیه‌ساز الگوریتم زمان‌بندی FCFS
 
-این پروژه سه روش زمان‌بندی را با workload و بازه شبیه‌سازی یکسان مقایسه می‌کند.
+این پروژه یک شبیه‌ساز آموزشی برای الگوریتم **First Come, First Served (FCFS)** در درس سیستم‌عامل است.
 
-- **FCFS:** اولین job واردشده زودتر اجرا می‌شود؛ در این پروژه غیرقابل‌قبضه (Non-preemptive) است.
-- **RM (Rate Monotonic):** وظیفه با دوره کوتاه‌تر اولویت ثابت بالاتری دارد؛ در این پروژه Preemptive است.
-- **EDF (Earliest Deadline First):** job با deadline مطلق نزدیک‌تر اولویت بالاتری دارد؛ در این پروژه Preemptive است.
+## امکانات
+- افزودن فرایند با زمان ورود (Arrival Time) و زمان اجرای CPU (Burst Time)
+- مرتب‌سازی فرایندها بر اساس زمان ورود
+- نمایش گانت چارت
+- انیمیشن اجرای مرحله‌به‌مرحله فرایندها روی CPU
+- شروع، مکث و شروع مجدد شبیه‌سازی
+- محاسبه زمان انتظار (Waiting Time) و زمان بازگشت (Turnaround Time)
+- محاسبه میانگین زمان انتظار و بازگشت
 
-## ساختار
-- `src/scheduler.py`: شبیه‌ساز سه الگوریتم
-- `results/`: خروجی‌های CSV و نتیجه اجرای نمونه
-- `docs/report.md`: گزارش تمرین
-- `docs/gantt_comparison.png`: نمودار گانت نمونه
-- `requirements.txt`: وابستگی‌ها
+## اجرای پروژه
+فایل `index.html` را در مرورگر باز کنید. برای انتشار آنلاین می‌توانید GitHub Pages را فعال کنید.
 
-## اجرا
-به Python 3.10 یا جدیدتر نیاز است. در پوشه اصلی اجرا کنید:
-```bash
-python src/scheduler.py
-```
-نتایج در پوشه `results` ذخیره می‌شوند.
+## فرمول‌ها
+- زمان شروع: `Start = max(زمان پایان فرایند قبلی، زمان ورود فرایند فعلی)`
+- زمان پایان: `Completion Time = Start + Burst Time`
+- زمان انتظار: `Waiting Time = Start - Arrival Time`
+- زمان بازگشت: `Turnaround Time = Completion Time - Arrival Time`
 
-## سناریوی یکسان آزمایش
-| وظیفه | زمان اجرا C | دوره T | deadline نسبی D |
-|---|---:|---:|---:|
-| T1 | 2 | 5 | 5 |
-| T2 | 1 | 7 | 7 |
-| T3 | 2 | 10 | 10 |
+## مثال پیش‌فرض
+| Process | Arrival Time | Burst Time |
+|---|---:|---:|
+| P1 | 0 | 5 |
+| P2 | 1 | 3 |
+| P3 | 2 | 8 |
+| P4 | 4 | 2 |
 
-زمان ورود اولیه همه وظایف صفر و مدت شبیه‌سازی 20 واحد زمانی است. هر job در هر دوره آزاد می‌شود و deadline آن برابر release time به‌علاوه period است.
+## نکته علمی
+FCFS یک الگوریتم **غیرقابل‌وقفه (Non-preemptive)** است؛ پس پس از شروع اجرای یک فرایند، اجرای آن تا پایان ادامه پیدا می‌کند. اگر CPU بیکار باشد، تا رسیدن فرایند بعدی منتظر می‌ماند.
 
-## معیارها
-تعداد jobهای تکمیل‌شده، deadlineهای رعایت‌شده/ناتمام، میانگین زمان انتظار، میانگین زمان پاسخ، تعداد preemption و درصد استفاده از CPU.
-
-## محدودیت‌ها و نکته علمی
-FCFS الگوریتم عمومی صف‌بندی است و برای انتخاب job به deadline یا period توجه نمی‌کند؛ RM و EDF برای زمان‌بندی بلادرنگ وظایف دوره‌ای استفاده می‌شوند. این پروژه یک آزمایش آموزشی است، نه اثبات برتری همیشگی یک الگوریتم. مدل تک‌پردازنده‌ای و گسسته است و هزینه تعویض متن (context-switch overhead) را در نظر نمی‌گیرد. jobهای ناتمام در پایان بازه، deadline رعایت‌نشده محسوب می‌شوند.
-
-## English summary
-This educational project compares non-preemptive FCFS with preemptive RM and EDF on the same periodic task set. It reports completion, deadline success, waiting time, response time, preemptions, and CPU utilization.
+---
+پروژه آموزشی درس سیستم‌عامل — الگوریتم FCFS
