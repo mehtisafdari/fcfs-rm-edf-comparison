@@ -1,0 +1,4 @@
+algorithm,jobs_released,jobs_completed,deadlines_met,deadlines_missed_or_unfinished,average_waiting_time,average_response_time,preemptions,cpu_utilization_percent
+FCFS,9,9,9,0,0.78,0.78,0,75.0
+RM,9,9,9,0,0.78,0.78,0,75.0
+EDF,9,9,9,0,0.78,0.78,0,75.0

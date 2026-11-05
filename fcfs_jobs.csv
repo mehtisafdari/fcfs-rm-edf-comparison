@@ -1,0 +1,10 @@
+task,release,deadline,execution,first_start,completion,response_time,turnaround_time,waiting_time,deadline_met
+T1,0,5,2,0,2,0,2,0,True
+T1,5,10,2,5,7,0,2,0,True
+T1,10,15,2,10,12,0,2,0,True
+T1,15,20,2,15,17,0,2,0,True
+T2,0,7,1,2,3,2,3,2,True
+T2,7,14,1,7,8,0,1,0,True
+T2,14,21,1,14,15,0,1,0,True
+T3,0,10,2,3,5,3,5,3,True
+T3,10,20,2,12,14,2,4,2,True
